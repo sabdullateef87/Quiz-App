@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css " />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div class="home-box custom-box">
+      <h3>Instruction :</h3>
+      <p>Total number of questions : <span class="total-question"></span></p>
+      <button class="start" type="button" onclick="startQuiz()">Start</button>
+    </div>
+
+    <div class="question-box custom-box hide">
+      <div class="question-number">
+        <p class="question-number-p"></p>
+      </div>
+
+      <div class="question"></div>
+      <div class="option-container"></div>
+      <div class="next-button">
+        <button class="btn" onclick="next()">Next</button>
+        <button class="btn">Prev</button>
+      </div>
+
+      <div class="answer-indicator"></div>
+    </div>
+
+    <div class="result-box custom-box hide">
+      <div class="quiz-result-header">
+        <p>Quiz Result</p>
+      </div>
+      <div class="result-table">
+        <table>
+          <tr>
+            <td class="left_">Total Question</td>
+            <td class="answer_Num"></td>
+          </tr>
+          <tr>
+            <td class="left_">Attempt</td>
+            <td class="attempt"></td>
+          </tr>
+          <tr>
+            <td class="left_">Correct</td>
+            <td class="table_correct"></td>
+          </tr>
+          <tr>
+            <td class="left_">Wrong</td>
+            <td class="table_wrong"></td>
+          </tr>
+          <tr>
+            <td class="left_">Percentage</td>
+
+            <td class="percentage"></td>
+          </tr>
+          <tr>
+            <td class="left_">Your Total Score</td>
+            <td class="tScore"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="try-again">
+        <button type="button" class="retry" onclick="tryAgain()">
+          Try Again
+        </button>
+        <button type="button" class="home" onclick="goHome()">
+          Go To Home
+        </button>
+      </div>
+    </div>
+
+    <script src="question.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
