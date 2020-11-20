@@ -13,6 +13,7 @@ let availableQuestions = [];
 let availableOptions = [];
 let correctAnswers = 0;
 let wrongAnswers = 0;
+let misClick = 0;
 
 const setAvailableQuestions = () => {
   const totalQuiz = quiz.length;
@@ -56,47 +57,26 @@ const getNewQuestion = () => {
 };
 
 const getResult = (ele) => {
-  if (parseInt(ele.id) !== currentQuestion.answer) {
-    ele.classList.add("wrong");
-    // updateAnswerIndicator("showWrong");
-    wrongAnswers += 1;
+  const len = optionContainer.children.length;
 
-    const len = optionContainer.children.length;
-    for (let i = 0; i < len; i++) {
-      if (parseInt(optionContainer.children[i].id) === currentQuestion.answer) {
-        optionContainer.children[i].classList.add("correct");
-        break;
-      }
+  for (let i = 0; i < len; i++) {
+    if (optionContainer.children[i].classList.contains("chosen") && !ele) {
+      optionContainer.children[i].classList.remove("chosen");
+      misClick += 1;
     }
+  }
+  ele.classList.add("chosen");
+
+  if (parseInt(ele.id) !== currentQuestion.answer) {
+    wrongAnswers += 1;
   } else {
-    ele.classList.add("correct");
-    // updateAnswerIndicator("showCorrect");
     correctAnswers += 1;
   }
-
-  dontClick();
 };
 
-// const addIndicators = () => {
-//   const len = quiz.length;
-//   for (let i = 0; i < len; i++) {
-//     const indicator = document.createElement("div");
-//     answerIndicator.appendChild(indicator);
-//   }
-// };
-
-// const updateAnswerIndicator = (markType) => {
-//   answerIndicator.children[questionCounter - 1].classList.add(markType);
-// };
-
-const dontClick = () => {
-  const optionLen = optionContainer.children.length;
-  for (let i = 0; i < optionLen; i++) {
-    optionContainer.children[i].classList.add("already-answered");
-  }
-};
 const next = () => {
   if (questionCounter === quiz.length) {
+    console.log(misClick);
     quizOver();
   } else {
     availableOptions = [];
